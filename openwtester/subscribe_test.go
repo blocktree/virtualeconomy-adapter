@@ -16,12 +16,13 @@
 package openwtester
 
 import (
+	"path/filepath"
+	"testing"
+
 	"github.com/astaxie/beego/config"
 	"github.com/blocktree/openwallet/log"
 	"github.com/blocktree/openwallet/openw"
 	"github.com/blocktree/openwallet/openwallet"
-	"path/filepath"
-	"testing"
 )
 
 ////////////////////////// 测试单个扫描器 //////////////////////////
@@ -52,7 +53,6 @@ func (sub *subscriberSingle) BlockExtractDataNotify(sourceKey string, data *open
 	return nil
 }
 
-
 func TestSubscribeAddress(t *testing.T) {
 
 	var (
@@ -60,8 +60,8 @@ func TestSubscribeAddress(t *testing.T) {
 		symbol     = "VSYS"
 		accountID  = "FUAKFujfVwdWJn79DFB4ZZQ6LRZS5cXfrGC9er2T5TSt"
 		addrs      = map[string]string{
-			"ARAA8AnUYa4kWwWkiZTTyztG5C6S9MFTx11": accountID,
-			"AREkgFxYhyCdtKD9JSSVhuGQomgGcacvQqM": accountID,
+			"ARFq8ZYkAAc1s212csBjjEWBS16Rj8iCoJJ": accountID,
+			//"AREkgFxYhyCdtKD9JSSVhuGQomgGcacvQqM": accountID,
 		}
 	)
 
@@ -96,7 +96,7 @@ func TestSubscribeAddress(t *testing.T) {
 
 	//log.Debug("already got scanner:", assetsMgr)
 	scanner := assetsMgr.GetBlockScanner()
-	//scanner.SetRescanBlockHeight(1993837)
+	scanner.SetRescanBlockHeight(2844762)
 
 	if scanner == nil {
 		log.Error(symbol, "is not support block scan")

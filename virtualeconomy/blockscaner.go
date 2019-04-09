@@ -487,6 +487,7 @@ func (bs *VSYSBlockScanner) ExtractTransaction(blockHeight uint64, blockHash str
 			BlockHeight: blockHeight,
 			TxID:        txid,
 			extractData: make(map[string]*openwallet.TxExtractData),
+			Success:     true,
 		}
 	)
 
@@ -518,6 +519,7 @@ func (bs *VSYSBlockScanner) ExtractTransaction(blockHeight uint64, blockHash str
 		trx.BlockHeight = blockHeight
 		trx.BlockHash = blockHash
 	}
+
 	if trx.TxType == 2 || trx.TxType == 5 {
 		bs.extractTransaction(trx, &result, scanAddressFunc)
 	}
@@ -1181,6 +1183,7 @@ func (bs *VSYSBlockScanner) GetTransactionsByAddress(offset, limit int, coin ope
 			BlockHeight: tx.BlockHeight,
 			TxID:        tx.TxID,
 			extractData: make(map[string]*openwallet.TxExtractData),
+			Success:     true,
 		}
 
 		if tx.TxType == 2 || tx.TxType == 5 {
