@@ -1,13 +1,15 @@
 # virtualeconomy-adapter
 
-可在openwtester包下运行适配器测试。
+本项目适配了openwallet.AssetsAdapter接口，给应用提供了底层的区块链协议支持。
 
-配置VSYS.ini文件如下：
+## 如何测试
+
+openwtester包下的测试用例已经集成了openwallet钱包体系，创建conf文件，新建VSYS.ini文件，编辑如下内容：
 
 ```ini
 
 # mainnet node api url
-mainnetNodeAPI = "http://47.106.102.2:10026/"
+mainnetNodeAPI = "http://127.0.0.1:10026/"
 # testnet node api url
 testnetNodeAPI = "http://localhost:9922/"
 # Is network test?
