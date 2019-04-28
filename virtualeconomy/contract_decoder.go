@@ -65,6 +65,7 @@ func convertIntStringToBigInt(amount string) (*big.Int, error) {
 }
 
 type ContractDecoder struct {
+	*openwallet.SmartContractDecoderBase
 	wm *WalletManager
 }
 
