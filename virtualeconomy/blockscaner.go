@@ -354,7 +354,7 @@ func (bs *VSYSBlockScanner) RescanFailedRecord() {
 
 //newBlockNotify 获得新区块后，通知给观测者
 func (bs *VSYSBlockScanner) newBlockNotify(block *Block, isFork bool) {
-	header := block.BlockHeader()
+	header := block.BlockHeader(bs.wm.Symbol())
 	header.Fork = isFork
 	bs.NewBlockNotify(header)
 }
