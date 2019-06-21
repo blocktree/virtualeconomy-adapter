@@ -636,6 +636,10 @@ func (wm *WalletManager) LoadAssetsConfig(c config.Configer) error {
 	wm.Config.FeeCharge = uint64(feeCharge)
 
 	wm.Config.SumAddress = c.String("sumAddress")
+	wm.Config.DataDir = c.String("dataDir")
+
+	//数据文件夹
+	wm.Config.makeDataDir()
 
 	return nil
 }
