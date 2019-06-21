@@ -18,5 +18,7 @@ isTestNet = false
 feeScale = 100
 # feeCharge is now a fixed value 10000000(aka 0.1VSYS)
 feeCharge = 10000000
+# Cache data file directory, default = "", current directory: ./data
+dataDir = ""
 
 ```
