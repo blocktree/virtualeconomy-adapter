@@ -17,7 +17,6 @@ package virtualeconomy
 
 import (
 	"encoding/hex"
-	"errors"
 	"fmt"
 	"math/big"
 	"sort"
@@ -103,7 +102,7 @@ func (decoder *TransactionDecoder) CreateVSYSRawTransaction(wrapper openwallet.W
 	}
 
 	if len(addresses) == 0 {
-		return fmt.Errorf("No addresses found in wallet [%s]", rawTx.Account.AccountID)
+		return openwallet.Errorf(openwallet.ErrAccountNotAddress, "[%s] have not addresses", rawTx.Account.AccountID)
 	}
 
 	addressesBalanceList := make([]AddrBalance, 0, len(addresses))
@@ -162,8 +161,7 @@ func (decoder *TransactionDecoder) CreateVSYSRawTransaction(wrapper openwallet.W
 	}
 
 	if from == "" {
-		log.Error("No enough VSYS to send!")
-		return errors.New("No enough VSYS to send!")
+		return openwallet.Errorf(openwallet.ErrInsufficientBalanceOfAccount, "the balance: %s is not enough", amountStr)
 	}
 
 	rawTx.TxFrom = []string{from}
@@ -489,7 +487,6 @@ func (decoder *TransactionDecoder) createRawTransaction(wrapper openwallet.Walle
 
 	return nil
 }
-
 
 //CreateSummaryRawTransactionWithError 创建汇总交易，返回能原始交易单数组（包含带错误的原始交易单）
 func (decoder *TransactionDecoder) CreateSummaryRawTransactionWithError(wrapper openwallet.WalletDAI, sumRawTx *openwallet.SummaryRawTransaction) ([]*openwallet.RawTransactionWithError, error) {
